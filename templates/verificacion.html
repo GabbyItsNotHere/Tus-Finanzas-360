@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Tus Finanzas 360 | Verificación de Seguridad</title>
+        <link rel="icon" type="image/JPG" href="../static/images/logo2.png">
+        <link rel="stylesheet" href="../static/css/estilo.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    </head>
+    <body>
+    <section class="ccin">
+        <div class="CReg">
+            <h1>Pregunta de Verificación</h1>
+            <p style="text-align: center; color: white; margin-bottom: 20px;">Configura tu pregunta de seguridad para recuperar tu cuenta en caso de olvidar la contraseña.</p>
+            
+            <form class="registro-form" method="POST" action="{{ url_for('verificacion') }}">
+                
+                <label for="pregunta">Seleccione una pregunta de seguridad:</label>
+                <select name="pregunta" id="pregunta" class="input-select" required>
+                    <option value="" disabled selected>Elige una opción...</option>
+                    <option value="¿Cuál es el nombre de tu primera mascota?">¿Cuál es el nombre de tu primera mascota?</option>
+                    <option value="¿En qué ciudad nació tu madre?">¿En qué ciudad nació tu madre?</option>
+                    <option value="¿Cuál es tu comida favorita?">¿Cuál es tu comida favorita?</option>
+                    <option value="¿Cuál fue tu primer colegio?">¿Cuál fue tu primer colegio?</option>
+                </select>
+            
+                <label>Respuesta de seguridad:</label>
+                <input type="text" name="respuesta" placeholder="Ej: Toby, Bogotá, Pizza..." required>
+            
+                <input type="submit" value="Guardar y Continuar" class="b2">
+                
+            </form>
+        </div>
+        
+        <footer>
+            <h1>
+                Tus Finanzas 360
+            </h1>
+            <h2>
+                Por Ibrahim J. Blanco P., Juan Pablo Salamanca, Kevin Ramirez y Esteban Yanez
+            </h2>
+            <h3>
+                Colegio Gabriel Betancourt Mejia
+            </h3>
+        </footer>
+    </section>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    </body>
+</html>

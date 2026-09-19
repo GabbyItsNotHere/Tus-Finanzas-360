@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu Principal</title>
+
+  <link rel="icon" type="image/JPG" href="../static/images/logo2.JPG">
+    <link rel="stylesheet" href="../static/css/estiloFuncional.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="sidebar" id="sidebar">
+
+    <div class="toggle" onclick="toggleSidebar()">
+        <i class="fa-solid fa-bars" style="color:black;"></i>
+    </div>
+
+    <a href="{{ url_for('usuario') }}" class="MItem">
+        <i class="fa-solid fa-circle-user" style="color:black;font-size:45px;"></i>
+        <span class="MT">Perfil</span>
+    </a>
+
+    <a href="{{ url_for('menu') }}" class="MItem">
+        <i class="fa-solid fa-house" style="color:black;font-size:25px;"></i>
+        <span class="MT">Inicio</span>
+    </a>
+
+    <a href="{{ url_for('dinero') }}" class="MItem">
+        <i class="fa-solid fa-money-bills" style="color:black;font-size:25px;"></i>
+        <span class="MT">Mi Dinero</span>
+    </a>
+
+    <a href="{{ url_for('meta') }}" class="MItem">
+        <i class="fa-solid fa-flag-checkered" style="color:black;font-size:25px;"></i>
+        <span class="MT">Metas</span>
+    </a>
+
+    <a href="{{ url_for('noti') }}" class="MItem">
+        <i class="fa-solid fa-bell" style="color:black;font-size:25px;"></i>
+        <span class="MT">Notificaciones</span>
+    </a>
+
+    <a href="{{ url_for('confi') }}" class="MItem" style="margin-top:auto;">
+        <i class="fa-solid fa-gears" style="color:black;font-size:40px;"></i>
+        <span class="MT">Configuración</span>
+    </a>
+
+    <a href="{{ url_for('logout') }}" class="MItem">
+        <i class="fa-solid fa-right-from-bracket" style="color:#d62828;font-size:35px;"></i>
+        <span class="MT" style="color:#d62828;">Cerrar sesión</span>
+    </a>
+
+</div>
+
+<div class="master">
+
+    <div class="M">
+
+        <h2>Balance</h2>
+
+        <div class="tarjetas-balance">
+
+            <div class="mini-tarjeta">
+
+                <i class="fa-solid fa-wallet" style="font-size:25px;"></i>
+
+                <p class="mini-label">
+
+                    Balance Total
+
+                </p>
+
+                <p class="mini-monto">
+
+                    ${{ "{:,.0f}".format(balance) }}
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="master">
+
+    <div class="M">
+
+        <h2>Gráfica de Gastos</h2>
+
+        <img src="{{ url_for('static', filename='img/grafica_placeholder.png') }}" class="ShutG">
+
+    </div>
+
+</div>
+
+<div class="master">
+
+    <div class="M">
+
+        <h2>Metas</h2>
+
+        <div class="meta-item">
+
+            <div class="meta-info">
+
+                <span>Próximamente...</span>
+
+            </div>
+
+            <div class="barra-meta">
+
+                <div class="progreso-meta" style="width:0%;"></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="master">
+
+    <div class="M">
+
+        <h2>Notificaciones Recientes</h2>
+
+        <div class="noti-item">
+
+            <i class="fa-solid fa-circle-info noti-icono"></i>
+
+            <div>
+
+                <p class="noti-titulo">
+
+                    No hay notificaciones.
+
+                </p>
+
+                <p class="noti-desc">
+
+                    Cuando agregues movimientos, metas o recordatorios aparecerán aquí.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<script src="{{ url_for('static', filename='js/MenuDes.js') }}"></script>
+
+</body>
+</html>

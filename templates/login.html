@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+  <title>Tus Finanzas 360 | Inicio de Sesion</title>
+  <link rel="icon" type="image/JPG" href="../static/images/logo2.png">
+  <link rel="stylesheet" href="../static/css/estilo.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">"
+    </head>
+    <body class="regis">
+      <section class="ccin">
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <img href="{{ url_for('inicio') }}" src="{{ url_for('static', filename='images/logo1.png') }}" alt="logo del proyecto"width="300" height="80">
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link" href="{{ url_for('inicio') }}">Inicio</a>
+        <a class="nav-link" href="{{ url_for('nosotros') }}">Quienes Somos</a>
+        <a class="nav-link" href="{{ url_for('mision') }}">Nuestra Mision</a>
+        <a class="nav-link" href="{{ url_for('registro') }}">Registrarse</a>
+        <a class="nav-link" href="{{ url_for('login') }}">Iniciar Sesion</a>
+      </div>
+    </div>
+  </div>
+</nav>
+  <div class="Cin">
+    {% if error %}
+        <div class="alert alert-danger" role="alert">
+            {{ error }}
+        </div>
+    {% endif %}
+
+    <form action="{{ url_for('login') }}" method="POST">
+        <div class="mb-3">
+            <label for="correo" class="form-label">Correo Electrónico</label>
+            <input type="email" class="form-control" id="correo" name="correo" required placeholder="tucorreo@ejemplo.com">
+        </div>
+                
+        <div class="mb-3">
+            <label for="password" class="form-label">Contraseña</label>
+            <input type="password" class="form-control" id="password" name="password" required placeholder="********">
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Ingresar</button>
+    </form>
+  </div>
+
+        <footer>
+            <h1>
+              Tus Finanzas 360
+            </h1>
+            <h2>
+              Por Ibrahim J. Blanco P. , Juan Pablo Salamanca, Kevin Ramirez y Esteban Yanez
+            </h2>
+            <h3>
+              Colegio Gabriel Betancourt Mejia
+            </h3>
+          </footer>
+    </section>
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  </body>"
+    </body>
+</html>

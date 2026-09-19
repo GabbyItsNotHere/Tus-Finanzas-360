@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu Principal</title>
+
+  <link rel="icon" type="image/JPG" href="../static/images/logof1.jpeg">
+  <link rel="stylesheet" href="../static/css/estiloFuncional.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+<div class="sidebar" id="sidebar">
+
+    <div class="toggle" onclick="toggleSidebar()">
+        <i class="fa-solid fa-bars" style="color:black;"></i>
+    </div>
+
+    <a href="{{ url_for('usuario') }}" class="MItem">
+        <i class="fa-solid fa-circle-user" style="color:black;font-size:45px;"></i>
+        <span class="MT">Perfil</span>
+    </a>
+
+    <a href="{{ url_for('menu') }}" class="MItem">
+        <i class="fa-solid fa-house" style="color:black;font-size:25px;"></i>
+        <span class="MT">Inicio</span>
+    </a>
+
+    <a href="{{ url_for('dinero') }}" class="MItem">
+        <i class="fa-solid fa-money-bills" style="color:black;font-size:25px;"></i>
+        <span class="MT">Mi Dinero</span>
+    </a>
+
+    <a href="{{ url_for('meta') }}" class="MItem">
+        <i class="fa-solid fa-flag-checkered" style="color:black;font-size:25px;"></i>
+        <span class="MT">Metas</span>
+    </a>
+
+    <a href="{{ url_for('noti') }}" class="MItem">
+        <i class="fa-solid fa-bell" style="color:black;font-size:25px;"></i>
+        <span class="MT">Notificaciones</span>
+    </a>
+
+    <a href="{{ url_for('confi') }}" class="MItem" style="margin-top:auto;">
+        <i class="fa-solid fa-gears" style="color:black;font-size:40px;"></i>
+        <span class="MT">Configuración</span>
+    </a>
+
+    {% if session.get('rol_id') == 2 %}
+    <a href="{{ url_for('usuarios') }}" class="MItem">
+        <i class="fa-solid fa-users-gear" style="color:black;font-size:25px;"></i>
+        <span class="MT">Panel Admin</span>
+    </a>
+    {% endif %}
+
+    <a href="{{ url_for('logout') }}" class="MItem">
+        <i class="fa-solid fa-right-from-bracket" style="color:#d62828;font-size:35px;"></i>
+        <span class="MT" style="color:#d62828;">Cerrar sesión</span>
+    </a>
+
+</div>
+
+<div class="master">
+    <div class="M">
+        <div class="tarjeta-logo">
+                <img src="../static/images/Sin título - 01 de agosto de 2026, 14.59.41.png" alt="" height="100px" width="430px">
+        </div>
+    </div>
+</div>
+
+<div class="master">
+    <div class="M">
+        <h2>Balance</h2>
+        <div class="tarjetas-balance">
+            <div class="mini-tarjeta">
+                <i class="fa-solid fa-wallet" style="font-size:25px;"></i>
+                <p class="mini-label">Balance Total</p>
+                <p class="mini-monto">${{ "{:,.0f}".format(balance) }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="master">
+    <div class="M">
+        <h2>Gráfica de Ingresos y Gastos</h2>
+        
+        <div style="position: relative; height: 40vh; width: 100%; min-height: 300px; margin-top: 15px;">
+            <canvas id="graficaFinanzas"></canvas>
+        </div>
+    </div>
+</div>
+
+<div class="master">
+    <div class="M">
+        <h2>Metas</h2>
+        <div class="meta-item">
+            <div class="meta-info">
+                <span>Próximamente...</span>
+            </div>
+            <div class="barra-meta">
+                <div class="progreso-meta" style="width:0%;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="master">
+    <div class="M">
+        <h2>Notificaciones Recientes</h2>
+        <div class="noti-item">
+            <i class="fa-solid fa-circle-info noti-icono"></i>
+            <div>
+                <p class="noti-titulo">No hay notificaciones.</p>
+                <p class="noti-desc">Cuando agregues movimientos, metas o recordatorios aparecerán aquí.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/MenuDes.js') }}"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      fetch('/api/datos-finanzas')
+        .then(response => response.json())
+        .then(datos => {
+          if (datos.error) {
+            console.error('Error desde el servidor:', datos.error);
+            return;
+          }
+
+          // 1. Sumamos todos los ingresos y gastos para sacar los totales
+          const totalIngresos = datos.ingresos.reduce((acumulador, valorActual) => acumulador + valorActual, 0);
+          const totalGastos = datos.gastos.reduce((acumulador, valorActual) => acumulador + valorActual, 0);
+
+          const ctx = document.getElementById('graficaFinanzas').getContext('2d');
+          
+          new Chart(ctx, {
+            type: 'pie', // Aquí cambiamos 'bar' por 'pie'
+            data: {
+              labels: ['Total Ingresos', 'Total Gastos'], // Solo dos etiquetas
+              datasets: [
+                {
+                  label: 'Balance Total',
+                  data: [totalIngresos, totalGastos], // Los dos totales sumados
+                  backgroundColor: [
+                    'rgba(30, 58, 95, 1)', // Verde para Ingresos
+                    'rgba(192, 192, 192, 1)'  // Rojo para Gastos
+                  ],
+                  borderColor: [
+                    'rgba(0, 0, 0, 1)',
+                    'rgba(0, 0, 0, 1)'
+                  ],
+                  borderWidth: 1,
+                  hoverOffset: 4 // Hace que la porción resalte al pasar el mouse
+                }
+              ]
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: {
+                legend: {
+                  position: 'bottom', // Mueve la leyenda abajo para que el pastel se vea más grande
+                  labels: {
+                    color: 'white' // <--- AQUÍ CAMBIAS EL COLOR DE LA LETRA
+                  },
+                },
+                tooltip: {
+                  callbacks: {
+                    // Esto formatea el texto emergente para que salga con el signo de dólar ($)
+                    label: function(context) {
+                      let label = context.label || '';
+                      if (label) {
+                        label += ': ';
+                      }
+                      if (context.parsed !== null) {
+                        label += new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(context.parsed);
+                      }
+                      return label;
+                    }
+                  }
+                }
+              }
+            }
+          });
+        })
+        .catch(error => console.error('Error cargando la gráfica:', error));
+    });
+</script>
+</body>
+</html>

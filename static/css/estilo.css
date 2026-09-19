@@ -1,0 +1,263 @@
+@font-face {
+    font-family: "PlayfairDisplay";
+    src: url("../font/PlayfairDisplay-Italic-VariableFont_wght.ttf");
+}
+
+.lo{
+    width: 360px;
+    height: 140px;
+    object-fit: contain;
+}
+
+footer{
+    font-weight: bold;
+    background-color: rgb(15, 32, 67); /* Azul oscuro secundario */
+    color: white; 
+    text-align: center;
+    padding: 35px;
+    border-top: 2px solid rgb(212, 175, 55); /* Toque dorado */
+}
+
+/* Nota: te sugiero usar una clase como .navbar en tu HTML en lugar de esto */
+navbar navbar-expand-lg bg-body-tertiary{
+    font-weight: bold;
+    background-color: rgb(15, 32, 67); 
+    color: white; 
+    text-align: center;
+    padding: 35px;
+}
+
+.contenido{
+    text-align: center;
+    padding: 70px;
+    font-size: x-large;
+    font-family: "PlayfairDisplay", sans-serif;
+    background-color: rgb(10, 25, 47); /* Azul oscuro dominante */
+    color: white;
+    border-bottom: 3px solid rgb(212, 175, 55); /* Toque dorado */
+}
+
+.b2{
+    padding: 10px 20px;
+    background-color: rgb(255, 255, 255); /* Blanco secundario */
+    text-decoration: none;
+    border-radius: 55px;
+    width: 175px;
+    color: rgb(10, 25, 47);
+    font-weight: bold;
+}
+
+.texto{
+    text-align: center;
+    padding: 10px;
+    font-size: 25px;
+}
+
+.contenedor{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contenedor img{
+    width: 600px;
+}
+
+.b1{
+    padding: 20px 50px;
+    background-color: rgb(212, 175, 55); /* Toque dorado principal para botones de llamada a la acción */
+    color: rgb(10, 25, 47); /* Texto en azul oscuro */
+    border: none; 
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.b1:hover {
+    background-color: rgb(230, 195, 75);
+}
+
+.CReg{
+    background-color: rgb(15, 32, 67); /* Azul oscuro secundario para tarjetas/contenedores */
+    border: 2px solid rgb(212, 175, 55); /* Toque dorado en bordes */
+    border-radius: 8px;
+    text-align: center;
+    color: white; 
+    padding: 40px;
+    height: 1300px; 
+    width: 600px;
+    margin: 50px auto;
+}
+
+.CReg form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+.CReg label{
+    font-weight: bold;
+    margin-top: 18px;
+    color: rgb(212, 175, 55); /* Toque dorado en etiquetas */
+}
+
+.CReg input{
+    padding: 20px;
+    border-radius: 8px;
+    border: 2px solid #dfe6e9;
+    width: 350px;   
+}
+
+.Cin{
+    background-color: rgb(15, 32, 67); 
+    border: 2px solid rgb(212, 175, 55); /* Toque dorado */
+    border-radius: 8px;
+    text-align: center;
+    color: white; 
+    padding: 40px;
+    height: 600px;
+    width: 600px;
+    margin: 50px auto;
+}
+
+.Cin form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+.Cin label{
+    font-weight: bold;
+    margin-top: 18px;
+    color: rgb(212, 175, 55); /* Toque dorado */
+}
+
+.Cin input{
+    padding: 20px;
+    border-radius: 8px;
+    border: 2px solid rgb(53, 53, 53);
+    width: 250px;   
+}
+
+.MV {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+    padding: 60px 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+    background-color: rgb(10, 25, 47); /* Azul oscuro dominante */
+}
+
+.t {
+    flex: 1;
+    text-align: left;
+    color: white;
+}
+
+.t h2, .t p {
+    color: white;
+}
+
+.i {
+    flex: 1;
+    display: flex;
+    justify-content: center; 
+}
+
+.i img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 15px;
+}
+
+.terminos {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+    text-align: left;
+    font-size: 15px;
+    color: white; 
+    gap: 10px;
+}
+
+.terminos input {
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+}
+
+.terminos a {
+    color: rgb(212, 175, 55); /* Toque dorado para enlaces */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.terminos a:hover {
+    text-decoration: underline;
+}
+
+.input-select {
+    width: 350px;
+    padding: 20px;
+    border: 2px solid #dfe6e9;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.terminos-container {
+    background-image: url("../images/fondo1.avif"); 
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+.terminos-card {
+    background: rgb(15, 32, 67); 
+    padding: 40px;
+    max-width: 700px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    text-align: center;
+    border: 1px solid rgb(212, 175, 55); /* Toque dorado */
+}
+
+.terminos-card p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+    color: white; 
+}
+
+h1{
+    font-family: "Playfair Display", serif;
+    color: rgb(212, 175, 55); /* Toque dorado en títulos principales */
+}
+
+p{
+    font-family: serif;
+    color: rgb(252, 252, 252);
+}
+
+h2{
+    font-size: 30px;
+    color: rgb(252, 252, 252);
+}
+
+h3{
+    font-size: 30px;
+    color: rgb(252, 252, 252);
+}
+
+.ccin{
+    /* Gradiente basado en azul oscuro con acentos sutiles */
+    background: linear-gradient(to right, rgb(5, 15, 30), rgb(10, 25, 47), rgb(20, 40, 75));
+}

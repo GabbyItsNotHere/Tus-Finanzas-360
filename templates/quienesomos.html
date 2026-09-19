@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Tus Finanzas 360 | Quienes Somos?</title>
+  <link rel="icon" src="../static/images/logo2.JPG">
+  <link rel="stylesheet" href="../static/css/estilo.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <img href="{{ url_for('inicio') }}" src="{{ url_for('static', filename='images/logo1.png') }}" alt="logo del proyecto"width="300" height="80">
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link" href="{{ url_for('inicio') }}">Inicio</a>
+        <a class="nav-link" href="{{ url_for('nosotros') }}">Quienes Somos</a>
+        <a class="nav-link" href="{{ url_for('mision') }}">Nuestra Mision</a>
+        <a class="nav-link" href="{{ url_for('registro') }}">Registrarse</a>
+        <a class="nav-link" href="{{ url_for('login') }}">Iniciar Sesion</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+  <section class="contenido">
+    <div class="contenedor">
+        <h2>Quienes Somos?</h2>
+        <p class="textoq">Tus Finanzas 360 es una app de gestión financiera diseñada <br>
+        para cambiar la manera en que las personas administran su dinero. Se creo para <br>
+        que todos pudiéramos manejar las finanzas personales ya que no debería ser complicado ni exclusivo para expertos.</p>
+        <img src="{{ url_for('static', filename='images/roles.png') }}" alt="qs" class="qs">
+    </div>
+  </section>
+  <footer>
+    <h1>
+      Tus Finanzas 360
+    </h1>
+    <h2>
+      Por Ibrahim J. Blanco P. , Juan Pablo Salamanca, Kevin Ramirez y Esteban Yanez
+    </h2>
+    <h3>
+      Colegio Gabriel Betancourt Mejia
+    </h3>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>

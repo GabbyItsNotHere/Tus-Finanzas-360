@@ -1,0 +1,358 @@
+@font-face {
+    font-family: "Outfit";
+    src: url(../font/Outfit-VariableFont_wght.ttf);
+}
+
+@font-face {
+    font-family: "Outfit";
+    src: url(../font/Outfit-Bold.ttf);
+    font-weight: bold;
+}
+
+body {
+    /* Fondo principal: Gradiente de azul oscuro elegante */
+    background: linear-gradient(135deg, rgb(15, 32, 67), rgb(10, 20, 40), rgb(5, 10, 20));
+    min-height: 100vh;
+    font-family: "Outfit";
+    color: white;
+}
+
+.sidebar{
+    position: fixed;
+    left: 25px;
+    top: 15px;
+    bottom: 15px;
+    width: 55px;
+    background-color: rgb(20, 40, 75); /* Color secundario azulado */
+    border-radius: 20px;
+    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.4);
+    padding: 20px 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    overflow: hidden;
+    transition: width 0.3s ease;
+    border: 1px solid rgba(212, 175, 55, 0.2); /* Toque dorado sutil */
+}
+
+.sidebar.expandida{
+    width: 180px;
+    align-items: flex-start;
+}
+
+.MItem{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    color: rgb(212, 175, 55); /* Toque dorado */
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 10px;
+    width: 90%;
+    transition: background 0.3s;
+}
+
+.MItem:hover{
+    background-color: rgba(212, 175, 55, 0.15);
+}
+
+.MT{
+    display: none;
+    white-space: nowrap;
+    color: white;
+}
+
+.sidebar.expandida .MT{
+    display: inline;
+}
+
+.toggle{
+    color: rgb(212, 175, 55); /* Toque dorado */
+    font-size: 20px;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 10px;
+    width: 90%;
+    text-align: center;
+}
+
+.toggle:hover{
+    background-color: rgba(212, 175, 55, 0.15);
+}
+
+.master{
+    margin-left: 100px;
+    margin-right: 15px;
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.M{
+    /* Gradiente con el azul oscuro dominante */
+    background: linear-gradient(135deg, rgb(20, 40, 75), rgb(12, 25, 50));
+    border-radius: 20px;
+    padding: 20px 25px;
+    width: 100%;
+    color: white;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(212, 175, 55, 0.3); /* Toque dorado */
+}
+
+h2{
+    font-family: Outfit;
+    font-weight: bold;
+    color: rgb(212, 175, 55); /* Toque dorado en títulos */
+}
+
+.shutdown{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
+    margin: 0 auto;
+}
+
+.ShutG{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 800px;
+    margin: 0 auto;
+}
+
+.Prep{
+    margin-left: 100px;
+    margin-right: 15px;
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.P{
+    background: linear-gradient(135deg, rgb(15, 30, 60), rgb(8, 18, 35));
+    border-radius: 20px;
+    padding: 20px 25px;
+    width: 300px;
+    color: white;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.boton{
+    padding: 10px 25px;
+    background-color: rgb(212, 175, 55); /* Toque dorado para botones de acción */
+    color: rgb(10, 25, 47); /* Texto oscuro para contraste */
+    border: none;
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 50%;
+    margin-top: 10px;
+    transition: background 0.3s;
+}
+
+.boton:hover{
+    background-color: rgb(230, 195, 75);
+}
+
+.met{
+    display: none;
+    background: rgb(15, 32, 67);
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.met.visible{
+    display: block;
+}
+
+.OT{
+    padding: 12px 20px;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+}
+
+.OT:hover{
+    background-color: rgba(212, 175, 55, 0.15);
+}
+
+/* Modo oscuro adaptado */
+body.oscuro{
+    background-color: rgb(5, 10, 20);
+    color: white;
+}
+
+body.oscuro .M{
+    background: linear-gradient(135deg, rgb(10, 20, 40), rgb(5, 10, 20));
+}
+
+body.oscuro .P{
+    background: linear-gradient(135deg, rgb(8, 15, 30), rgb(4, 8, 15));
+}
+
+body.oscuro .N{
+    background: linear-gradient(135deg, rgb(8, 15, 30), rgb(4, 8, 15));
+}
+
+.CF{
+    margin-left: 350px;
+    margin-top: 15px;
+    margin-right: 15px;
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+.FP{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.FP img{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    border: 2px solid rgb(212, 175, 55); /* Toque dorado */
+}
+
+.tarjetas-balance {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.tarjeta-logo {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: left;
+    margin-top: 10px;
+}
+
+.mini-tarjeta {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 15px 20px;
+    text-align: center;
+    min-width: 120px;
+    backdrop-filter: blur(5px);
+}
+
+.mini-tarjeta.verde { background-color: rgba(34, 197, 94, 0.25); }
+.mini-tarjeta.rojo { background-color: rgba(239, 68, 68, 0.25); }
+.mini-tarjeta.amarillo { background-color: rgba(234, 179, 8, 0.25); }
+
+.mini-label {
+    font-size: 12px;
+    opacity: 0.8;
+    margin: 5px 0;
+}
+
+.mini-monto {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.meta-item {
+    margin-bottom: 15px;
+}
+
+.meta-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.barra-meta {
+    width: 100%;
+    height: 12px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.progreso-meta {
+    height: 100%;
+    background: linear-gradient(90deg, rgb(212, 175, 55), rgb(230, 195, 75)); /* Gradiente con toque dorado */
+    border-radius: 20px;
+    transition: width 1s ease;
+}
+
+.progreso-meta.completada {
+    background: linear-gradient(90deg, rgb(34, 197, 94), rgb(20, 150, 70));
+}
+
+.noti-item {
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+    padding: 12px;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    background-color: rgba(255, 255, 255, 0.08);
+    transition: background 0.3s;
+}
+
+.noti-item:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    cursor: pointer;
+}
+
+.noti-icono {
+    font-size: 22px;
+    margin-top: 3px;
+    color: rgb(212, 175, 55); /* Toque dorado */
+}
+
+.amarillo-i { color: rgb(234, 179, 8); }
+.verde-i { color: rgb(34, 197, 94); }
+
+.noti-titulo {
+    font-weight: bold;
+    margin: 0 0 3px 0;
+    font-size: 15px;
+    color: rgb(212, 175, 55);
+}
+
+.noti-desc {
+    margin: 0 0 3px 0;
+    font-size: 13px;
+    opacity: 0.9;
+}
+
+.noti-tiempo {
+    margin: 0;
+    font-size: 11px;
+    opacity: 0.5;
+}
+
+.imagenDerecha{
+    position: fixed;
+    right: 80px;
+    top: 140px;
+    z-index: 2;
+    width: 350px;
+    border-radius: 25px;
+    box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.5);
+    border: 2px solid rgba(212, 175, 55, 0.3);
+}

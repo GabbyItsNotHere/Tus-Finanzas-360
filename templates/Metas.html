@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metas</title>
+
+    <link rel="icon" type="image/JPG" href="../static/images/logo2.JPG">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Metas.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+<div class="sidebar" id="sidebar">
+
+    <div class="toggle" onclick="toggleSidebar()">
+        <i class="fa-solid fa-bars" style="color:black;"></i>
+    </div>
+
+    <a href="{{ url_for('usuario') }}" class="MItem">
+        <i class="fa-solid fa-circle-user" style="color:black;font-size:45px;"></i>
+        <span class="MT">Perfil</span>
+    </a>
+
+    <a href="{{ url_for('menu') }}" class="MItem">
+        <i class="fa-solid fa-house" style="color:black;font-size:25px;"></i>
+        <span class="MT">Inicio</span>
+    </a>
+
+    <a href="{{ url_for('dinero') }}" class="MItem">
+        <i class="fa-solid fa-money-bills" style="color:black;font-size:25px;"></i>
+        <span class="MT">Mi Dinero</span>
+    </a>
+
+    <a href="{{ url_for('meta') }}" class="MItem">
+        <i class="fa-solid fa-flag-checkered" style="color:black;font-size:25px;"></i>
+        <span class="MT">Metas</span>
+    </a>
+
+    <a href="{{ url_for('noti') }}" class="MItem">
+        <i class="fa-solid fa-bell" style="color:black;font-size:25px;"></i>
+        <span class="MT">Notificaciones</span>
+    </a>
+
+    <a href="{{ url_for('confi') }}" class="MItem" style="margin-top:auto;">
+        <i class="fa-solid fa-gears" style="color:black;font-size:40px;"></i>
+        <span class="MT">Configuración</span>
+    </a>
+
+    <a href="{{ url_for('logout') }}" class="MItem">
+        <i class="fa-solid fa-right-from-bracket" style="color:#d62828;font-size:35px;"></i>
+        <span class="MT" style="color:#d62828;">Cerrar sesión</span>
+    </a>
+
+</div>
+
+<div class="contenedor">
+
+    <header>
+        <h1>Metas</h1>
+        <p>Organiza tus objetivos financieros</p>
+    </header>
+
+    <div class="informacion">
+        <h2>¿Qué son las metas financieras?</h2>
+        <p>
+            Las metas financieras ayudan a organizar y controlar el dinero para cumplir objetivos personales.
+            Permiten ahorrar de manera ordenada y visualizar el progreso hacia cada objetivo.
+        </p>
+        <p>
+            En esta sección podrás administrar diferentes metas, establecer montos objetivos,
+            registrar avances y mantener un control de tus ahorros.
+        </p>
+    </div>
+
+    <button class="boton" onclick="abrirModal()">
+        Nueva Meta +
+    </button>
+
+    {% if metas %}
+
+        {% for meta in metas %}
+
+            {% set porcentaje = ((meta.Monto_Actual / meta.Monto_Objetivo) * 100) | round(0) if meta.Monto_Objetivo > 0 else 0 %}
+
+            <div class="tarjeta">
+
+                <h2>{{ meta.Nombre }}</h2>
+
+                <p>
+                    <strong>Monto actual:</strong>
+                    ${{ "{:,.0f}".format(meta.Monto_Actual) }}
+                </p>
+
+                <p>
+                    <strong>Monto objetivo:</strong>
+                    ${{ "{:,.0f}".format(meta.Monto_Objetivo) }}
+                </p>
+
+                <p>
+                    <strong>Fecha límite:</strong>
+                    {{ meta.Fecha_limite }}
+                </p>
+
+                <p>
+                    <strong>Descripción:</strong>
+                    {{ meta.Descripcion }}
+                </p>
+
+                <div class="barra">
+                    <div class="progreso" style="width: {{ porcentaje }}%;"></div>
+                </div>
+
+                <p>{{ porcentaje }}%</p>
+
+                    <!-- POR ESTO (más limpio y sin errores) -->
+                
+                <button class="boton" 
+                    onclick="abrirModalAbono({{ meta.ID_Metas }}, {{ balance }})">
+                    Abonar
+                </button>
+            </div>
+
+        {% endfor %}
+
+    {% else %}
+
+        <div class="tarjeta">
+            <h2>No tienes metas registradas.</h2>
+            <p>Presiona "Nueva Meta +" para crear tu primera meta financiera.</p>
+        </div>
+
+    {% endif %}
+
+</div>
+
+<div id="modalMeta" class="modal">
+
+    <div class="modal-contenido">
+
+        <span class="cerrar" onclick="cerrarModal()">&times;</span>
+
+        <h2>Nueva Meta</h2>
+
+        <form action="{{ url_for('crear_meta') }}" method="POST">
+
+            <input
+                type="text"
+                name="titulo"
+                placeholder="Nombre de la meta"
+                required>
+
+            <textarea
+                name="descripcion"
+                placeholder="Descripción"
+                rows="3"></textarea>
+
+            <input
+                type="number"
+                name="monto_objetivo"
+                placeholder="Monto objetivo"
+                step="0.01"
+                min="1"
+                required>
+
+            <input
+                type="date"
+                name="fecha_limite"
+                required>
+
+            <button
+                class="boton"
+                type="submit">
+                Crear Meta
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+<div id="modalAbono" class="modal">
+
+    <div class="modal-contenido">
+
+        <span class="cerrar" onclick="cerrarModalAbono()">&times;</span>
+
+        <h2>Abonar a la meta</h2>
+
+        <p>
+            Dinero disponible:
+            <strong>
+                ${{ "{:,.0f}".format(balance) }}
+            </strong>
+        </p>
+
+        <form action="{{ url_for('abonar_meta') }}" method="POST">
+
+            <input
+                type="hidden"
+                id="id_meta"
+                name="id_metas">
+
+            <input
+                type="number"
+                name="monto_aportado"
+                id="monto_aportado"
+                placeholder="Monto a abonar"
+                min="1"
+                step="0.01"
+                required>
+
+            <button
+                class="boton"
+                type="submit">
+                Guardar
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/MenuDes.js') }}"></script>
+
+<script>
+function abrirModal(){
+    document.getElementById("modalMeta").style.display="flex";
+}
+
+function cerrarModal(){
+    document.getElementById("modalMeta").style.display="none";
+}
+
+window.onclick=function(event){
+    let modalMeta = document.getElementById("modalMeta");
+    let modalAbono = document.getElementById("modalAbono");
+    if(event.target == modalMeta){
+        modalMeta.style.display="none";
+    }
+    if(event.target == modalAbono){
+        modalAbono.style.display="none";
+    }
+}
+</script>
+
+<script>
+function abrirModalAbono(idMeta, balanceDispo){
+    document.getElementById("modalAbono").style.display="flex";
+    document.getElementById("id_meta").value = idMeta;
+    
+    let inputMonto = document.getElementById("monto_aportado");
+    inputMonto.max = balanceDispo;
+}
+
+function cerrarModalAbono(){
+    document.getElementById("modalAbono").style.display="none";
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,129 @@
+@font-face {
+    font-family: "Outfit";
+    src: url(../font/Outfit-VariableFont_wght.ttf);
+}
+
+@font-face {
+    font-family: "Outfit";
+    src: url(../font/Outfit-Bold.ttf);
+    font-weight: bold;
+}
+
+body {
+    margin: 0;
+    font-family: "Outfit", Arial, Helvetica, sans-serif;
+    background: linear-gradient(135deg, rgb(15, 32, 67), rgb(10, 20, 40), rgb(5, 10, 20));
+    min-height: 100vh;
+    color: white;
+    display: flex;
+}
+
+.sidebar {
+    position: fixed;
+    left: 25px;
+    top: 15px;
+    bottom: 15px;
+    width: 55px;
+    background-color: rgb(20, 40, 75);
+    border-radius: 20px;
+    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.4);
+    padding: 20px 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    overflow: hidden;
+    transition: width 0.3s ease;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.sidebar.expandida {
+    width: 180px;
+    align-items: flex-start;
+}
+
+.MItem {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    color: rgb(212, 175, 55);
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 10px;
+    width: 90%;
+    transition: background 0.3s;
+}
+
+.MItem:hover {
+    background-color: rgba(212, 175, 55, 0.15);
+}
+
+.MT {
+    display: none;
+    white-space: nowrap;
+    color: white;
+}
+
+.sidebar.expandida .MT {
+    display: inline;
+}
+
+.toggle {
+    color: rgb(212, 175, 55);
+    font-size: 20px;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 10px;
+    width: 90%;
+    text-align: center;
+}
+
+.toggle:hover {
+    background-color: rgba(212, 175, 55, 0.15);
+}
+
+.contenedor {
+    margin-left: 100px;
+    margin-right: 25px;
+    padding: 30px;
+    width: 100%;
+}
+
+header {
+    background: linear-gradient(135deg, rgb(20, 40, 75), rgb(12, 25, 50));
+    color: white;
+    text-align: center;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+    margin-bottom: 30px;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.tarjeta {
+    background: linear-gradient(135deg, rgb(20, 40, 75), rgb(12, 25, 50));
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    border-left: 5px solid rgb(212, 175, 55);
+    border-top: 1px solid rgba(212, 175, 55, 0.2);
+    border-right: 1px solid rgba(212, 175, 55, 0.2);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+h1 {
+    margin: 0;
+    color: rgb(212, 175, 55);
+}
+
+h2 {
+    margin-top: 0;
+    color: rgb(212, 175, 55);
+}
+
+p {
+    color: white;
+    opacity: 0.9;
+}

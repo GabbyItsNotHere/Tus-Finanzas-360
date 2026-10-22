@@ -1,0 +1,151 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    background-color: rgb(5, 10, 20);
+    color: white;
+}
+
+.main-wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+.side {
+    width: 320px;
+    background-color: rgb(20, 40, 75);
+    padding: 30px 20px;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.4);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    border-right: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.sidebar h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    color: rgb(212, 175, 55);
+}
+
+.card {
+    padding: 20px;
+    border-radius: 15px;
+    color: white;
+    text-align: center;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.income-card { background-color: rgb(15, 30, 60); }
+.expense-card { background-color: rgb(15, 30, 60); }
+.balance-card { background-color: rgb(12, 28, 55); margin-top: 10px; border: 1px solid rgb(212, 175, 55); }
+
+.card small { font-weight: bold; opacity: 0.9; font-size: 0.75rem; letter-spacing: 1px; color: rgb(212, 175, 55); }
+.card div { font-size: 1.8rem; font-weight: bold; margin-top: 5px; color: white; }
+
+.btn-home {
+    margin-top: auto;
+    padding: 12px;
+    background: rgb(212, 175, 55);
+    color: rgb(10, 20, 40);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.btn-home:hover {
+    background: rgb(230, 195, 75);
+}
+
+/* --- CONTENIDO (Derecha) --- */
+.content {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.input-panel {
+    background: rgb(15, 30, 60);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 10px;
+}
+
+input {
+    padding: 12px;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 8px;
+    outline: none;
+    background-color: #ffffff;
+    color: #333333;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    color: rgb(10, 20, 40);
+    transition: 0.2s;
+}
+
+.btn-income { background-color: rgb(212, 175, 55); }
+.btn-expense { background-color: rgb(212, 175, 55); }
+button:hover { opacity: 0.85; background-color: rgb(230, 195, 75); }
+
+/* --- TABLA --- */
+.history-panel {
+    background: rgb(15, 30, 60);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+th {
+    text-align: left;
+    padding: 12px;
+    border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+    color: rgb(212, 175, 55);
+}
+
+td {
+    padding: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: #cbd5e1;
+}
+
+.badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    color: rgb(10, 20, 40);
+    font-weight: bold;
+}
+
+.badge.income { background-color: rgb(212, 175, 55); }
+.badge.expense { background-color: rgb(212, 175, 55); }
+
+td.income { color: rgb(212, 175, 55); font-weight: bold; }
+td.expense { color: #f87171; font-weight: bold; }
+
+.fa-solid.fa-house {
+    color: rgb(212, 175, 55);
+}

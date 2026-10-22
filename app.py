@@ -15,7 +15,7 @@ db_config = {
     "user": os.environ.get("MYSQL_USER", "avnadmin"),
     "password": os.environ.get("MYSQL_PASSWORD", "AVNS_wABlgkqRp0DcLGcfz8I"),
     "database": os.environ.get("MYSQL_DB", "defaultdb"),
-    "port": int(os.environ.get("MYSQL_PORT", 23767))
+    "port": int(os.environ.get("MYSQL_PORT", 23767)),
     "ssl_disabled": True
 }
 

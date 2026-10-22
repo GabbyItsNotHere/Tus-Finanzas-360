@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control de Finanzas</title>
+
+    <link rel="icon" type="image/JPG" href="../static/images/logo2.JPG">
+    <link rel="stylesheet" href="../static/css/stilo.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+<div class="main-wrapper">
+
+    <aside class="side">
+
+        <h2>Mi Balance</h2>
+
+        <div class="card income-card">
+            <small>INGRESOS</small>
+            <div id="total-income">
+                ${{ "{:,.0f}".format(ingresos) }}
+            </div>
+        </div>
+
+        <div class="card expense-card">
+            <small>GASTOS</small>
+            <div id="total-expense">
+                ${{ "{:,.0f}".format(gastos) }}
+            </div>
+        </div>
+
+        <div class="card balance-card">
+            <small>BALANCE NETO</small>
+            <div id="total-balance">
+                ${{ "{:,.0f}".format(balance) }}
+            </div>
+        </div>
+
+        <div class="nav-buttons">
+
+            <a href="{{ url_for('menu') }}" class="btn-home-link">
+
+                <button class="btn-home">
+
+                    <i class="fa-solid fa-house"></i>
+
+                    Menú
+
+                </button>
+
+            </a>
+
+        </div>
+
+    </aside>
+
+    <main class="content">
+
+        <div class="input-panel">
+
+            <h3>Nuevo Movimiento</h3>
+
+            <div class="form-grid">
+
+                <form method="POST" action="{{ url_for('agregar_movimiento') }}">
+
+                    <div class="form-grid">
+                
+                        <input
+                            type="text"
+                            name="descripcion"
+                            placeholder="Descripción"
+                            required>
+                
+                        <input
+                            type="number"
+                            name="monto"
+                            min="1"
+                            step="0.01"
+                            placeholder="Monto"
+                            required>
+                
+                        <button
+                            type="submit"
+                            name="tipo"
+                            value="income"
+                            class="btn-income">
+                
+                            Es Ingreso
+                
+                        </button>
+                
+                        <button
+                            type="submit"
+                            name="tipo"
+                            value="expense"
+                            class="btn-expense">
+                
+                            Es Gasto
+                
+                        </button>
+                
+                    </div>
+                
+                </form>
+
+            </div>
+
+        </div>
+
+        <div class="history-panel">
+
+            <h3>Historial de Actividad</h3>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Fecha</th>
+                        <th>Descripción</th>
+                        <th>Tipo</th>
+                        <th>Monto</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                {% if movimientos %}
+
+                    {% for movimiento in movimientos %}
+
+                    <tr>
+
+                        <td>
+
+                            {{ movimiento.fecha.strftime("%d/%m/%Y %H:%M") if movimiento.fecha else "" }}
+
+                        </td>
+
+                        <td>
+
+                            {{ movimiento.descripcion }}
+
+                        </td>
+
+                        <td>
+
+                            {% if movimiento.tipo == "income" %}
+
+                                <span class="badge income">
+
+                                    <i class="fa-solid fa-arrow-trend-up"></i>
+
+                                    Ingreso
+
+                                </span>
+
+                            {% else %}
+
+                                <span class="badge expense">
+
+                                    <i class="fa-solid fa-arrow-trend-down"></i>
+
+                                    Gasto
+
+                                </span>
+
+                            {% endif %}
+
+                        </td>
+
+                        <td class="{{ movimiento.tipo }}">
+
+                            {% if movimiento.tipo=="income" %}
+
+                                +${{ "{:,.0f}".format(movimiento.monto) }}
+
+                            {% else %}
+
+                                -${{ "{:,.0f}".format(movimiento.monto) }}
+
+                            {% endif %}
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                {% else %}
+
+                    <tr>
+
+                        <td colspan="4" style="text-align:center;padding:25px;">
+
+                            No tienes movimientos registrados.
+
+                        </td>
+
+                    </tr>
+
+                {% endif %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Tus Finanzas 360</title>
+  <link rel="icon" type="image/JPG" href="../static/images/logof1.jpg">
+  <link rel="stylesheet" href="../static/css/estilo.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <img href="{{ url_for('inicio') }}" src="{{ url_for('static', filename='images/logo1.png') }}" alt="logo del proyecto"width="300" height="80">
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link" href="{{ url_for('inicio') }}">Inicio</a>
+        <a class="nav-link" href="{{ url_for('nosotros') }}">Quienes Somos</a>
+        <a class="nav-link" href="{{ url_for('mision') }}">Nuestra Mision</a>
+        <a class="nav-link" href="{{ url_for('registro') }}">Registrarse</a>
+        <a class="nav-link" href="{{ url_for('login') }}">Iniciar Sesion</a>
+      </div>
+    </div>
+  </div>
+</nav>
+  </header>
+  <section class="contenido">
+    <h1>
+      BIENVENIDOS A TUS FINANZAS 360
+    </h1>
+    <div class="contenedor" id="inicio">
+      <img src="{{ url_for('static', filename='images/pngtree-isometric-stock-or-forex-trading-graph-png-image_15494854.png') }}" alt="gr1">
+      <p class="texto">Esta app te ayudara para que aproveches tu tiempo y puedas llevar una administracion y finanzas de forma efectiva. <br> Te invitamos a que la conozcas <br> Forma parte de este nuevo mundo donde tus finanzas te llevaran al exito </p>
+      <img src="{{ url_for('static', filename='images/pngtree-trading-or-business-profit-illustration-with-pile-of-gold-coin-economic-png-image_9150208.png') }}" alt="gr2">
+    </div>
+  </section>
+  <section class="contenido">
+    <div>
+      <h2>Registrate ahora, Que es Gratis!</h2>
+      <a href="{{ url_for('registro') }}" class="b1">Registrarse</a>
+      <br> <br>
+      <h3>O si ya tienes una cuenta, Inicia Sesion</h3>
+      <a href="{{ url_for('login') }}" class="b1">Login</a>
+    </div>
+  </section>
+  <footer>
+    <h1>
+      Tus Finanzas 360
+    </h1>
+    <h2>
+      Por Ibrahim J. Blanco P. , Juan Pablo Salamanca, Kevin Ramirez y Esteban Yanez
+    </h2>
+    <h3>
+      Colegio Gabriel Betancourt Mejia
+    </h3>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>

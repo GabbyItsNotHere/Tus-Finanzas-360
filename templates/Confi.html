@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Configuracion</title>
+  <link rel="icon" type="image/JPG" href="../img/logo2.JPG">
+  <link rel="stylesheet" href="../estiloFuncional.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <div class="sidebar" id="sidebar">
+        <div class="toggle" onclick="toggleSidebar()">
+          <i class="fa-solid fa-bars" style="color: rgb(0, 0, 0);"></i>
+        </div>
+    
+        <div class="MItem" onclick="toggleSidebar()">
+          <i class="fa-solid fa-circle-user"
+            style="color: rgb(0, 0, 0);
+            font-size: 45px;"
+            onclick="event.stopPropagation(); irA('../Usuario/usuario.html')"></i>
+          <span class="MT" onclick="event.stopPropagation(); irA('../Usuario/usuario.html')">Perfil</span>
+        </div>
+    
+        <div class="MItem" onclick="toggleSidebar()">
+          <i class="fa-solid fa-house"
+          style="color: rgb(0,0,0); font-size: 25px;"
+          nclick="event.stopPropagation(); irA('../Menu/Menu.html')" ></i>
+          <span class="MT" onclick="event.stopPropagation(); irA('../Menu/Menu.html')">Inicio</span>
+        </div>
+    
+        <div class="MItem" onclick="toggleSidebar()">
+          <i class="fa-solid fa-money-bills"
+          style="color: rgb(0, 0, 0); font-size: 25px;"
+          onclick="event.stopPropagation(); irA('../Mi_Dinero/Dinero.html')" ></i>
+          <span class="MT" onclick="event.stopPropagation(); irA('../Mi_Dinero/Dinero.html')">Mi Dinero</span>
+        </div>
+    
+        <div class="MItem" onclick="toggleSidebar()">
+          <i class="fa-solid fa-flag-checkered"
+          style="color: rgb(0,0,0); font-size: 25px;"
+          onclick="event.stopPropagation(); irA('../Metas/Metas.html')" ></i>
+          <span class="MT" onclick="event.stopPropagation(); irA('../Metas/Metas.html')">Metas</span>
+        </div>
+      
+        <div class="MItem" onclick="toggleSidebar()">
+          <i class="fa-solid fa-bell"
+          style="color: rgb(0,0,0); font-size: 25px;"
+          onclick="event.stopPropagation(); irA('../Notificacion/Notificacion.html')" ></i>
+          <span class="MT" onclick="event.stopPropagation(); irA('../Notificaciones/Notificaciones.html')">Notificaciones</span>
+        </div>
+    
+        <div class="MItem" onclick="toggleSidebar()"  style=" margin-top: auto;">
+          <i class="fa-solid fa-gears"
+          style="color: rgb(0,0,0); font-size: 45px;"
+          onclick="event.stopPropagation(); irA('../Confi/Confi.html')"></i>
+          <span class="MT" onclick="event.stopPropagation(); irA('../Confi/Confi.html')"> Configuracion</span>    
+        </div>
+      </div>
+
+    <div class="master">
+        <div class="M">
+          <h2>
+            Configuracion
+          </h2>
+        </div>
+    </div>
+
+    <div class="Prep">
+        <div class="P">
+            <h2>Preferencias</h2>
+    
+            <div class="boton" onclick="toggleMenuTema()">Cambiar Tema</div>
+            
+            <div class="met" id="met">
+                <div class="OT" onclick="cambiarTema('claro')">
+                    <i class="fa-regular fa-sun"> Modo Claro</i>
+                </div>
+                <div class="OT" onclick="cambiarTema('oscuro')">
+                    <i class="fa-regular fa-moon"> Modo Oscuro</i>
+                </div>
+            </div>
+    
+            <div class="boton">Cambiar Idioma</div>
+            <div class="boton">Cambiar Divisa</div>
+    
+        </div>
+    </div>
+        
+    <div class="Prep">
+        <div class="P">
+            <h2>
+                Privacidad
+            </h2>
+
+            <div class="boton">Historial de Actividad</div>
+            <div class="boton">Exportar datos</div>
+            
+        </div>
+    </div>
+        
+      </div>
+
+      <script src="../Menu/MenuDes.js"></script>
+</body>
+</html>

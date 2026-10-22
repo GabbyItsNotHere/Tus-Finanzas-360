@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Notificaciones</title>
+  <link rel="icon" type="image/JPG" href="../img/logo2.JPG">
+  <link rel="stylesheet" href="../static/css/Notificaciones.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <div class="sidebar" id="sidebar">
+      <div class="toggle" onclick="toggleSidebar();">
+        <i class="fa-solid fa-bars" style="color: rgb(0, 0, 0);"></i>
+      </div>
+    
+      <div class="MItem" onclick="toggleSidebar();">
+        <i class="fa-solid fa-circle-user"
+          style="color: rgb(0, 0, 0); font-size: 45px;"
+          data-url="{{ url_for('usuario') }}"
+          onclick="event.stopPropagation(); window.location.href=this.getAttribute('data-url');"></i>
+        <span class="MT" 
+          data-url="{{ url_for('usuario') }}" 
+          onclick="event.stopPropagation(); window.location.href=this.getAttribute('data-url');">Perfil</span>
+      </div>
+    
+      <div class="MItem" onclick="toggleSidebar();">
+        <i class="fa-solid fa-house"
+          style="color: rgb(0,0,0); font-size: 25px;"
+          data-url="{{ url_for('menu') }}"
+          onclick="event.stopPropagation(); window.location.href=this.getAttribute('data-url');"></i>
+        <span class="MT" 
+          data-url="{{ url_for('menu') }}" 
+          onclick="event.stopPropagation(); window.location.href=this.getAttribute('data-url');">Inicio</span>
+      </div>
+    
+      <div class="MItem" onclick="toggleSidebar();">
+        <i class="fa-solid fa-money-bills"
+          style="color: rgb(0, 0, 0); font-size: 25px;"
+          data-url="{{ url_for('dinero') }}"
+          onclick="event.stopPropagation(); window.location.href=this.getAttribute('data-url');"></i>
+        <span class="MT" 
+          data-url="{{ url_for('dinero') }}" 
+          onclick="event.stopPropagation(); window.location.href=this.getAttribute('data-url');">Mi Dinero</span>
+      </div>
+      
+      <div class="MItem" onclick="toggleSidebar();">
+        <i class="fa-solid fa-flag-checkered"
+          style="color: rgb(0,0,0); font-size: 25px;"
+          data-url="{{ url_for('meta') }}"
+          onclick="event.stopPropagation(); window.location.href=this.getAttribute('data-url');"></i>
+        <span class="MT" 
+          data-url="{{ url_for('meta') }}" 
+          onclick="event.stopPropagation(); window.location.href=this.getAttribute('data-url');">Metas</span>
+      </div>
+      
+      <div class="MItem" onclick="toggleSidebar();">
+        <i class="fa-solid fa-bell"
+          style="color: rgb(0,0,0); font-size: 25px;"
+          data-url="{{ url_for('noti') }}"
+          onclick="event.stopPropagation(); window.location.href=this.getAttribute('data-url');"></i>
+        <span class="MT" 
+          data-url="{{ url_for('noti') }}" 
+          onclick="event.stopPropagation(); window.location.href=this.getAttribute('data-url');">Notificaciones</span>
+      </div>
+    
+      <div class="MItem" onclick="toggleSidebar();" style="margin-top: auto;">
+        <i class="fa-solid fa-gears"
+          style="color: rgb(0,0,0); font-size: 45px;"
+          data-url="{{ url_for('confi') }}"
+          onclick="event.stopPropagation(); window.location.href=this.getAttribute('data-url');"></i>
+        <span class="MT" 
+          data-url="{{ url_for('confi') }}" 
+          onclick="event.stopPropagation(); window.location.href=this.getAttribute('data-url');">Configuracion</span>    
+      </div>
+
+      <a href="{{ url_for('logout') }}" class="MItem">
+        <i class="fa-solid fa-right-from-bracket" style="color:#d62828;font-size:35px;"></i>
+        <span class="MT" style="color:#d62828;">Cerrar sesión</span>
+      </a>
+      
+    </div>
+
+    <div class="contenedor">
+
+      <header>
+          <h1>Notificaciones</h1>
+          <p>Ve el registro de tus Notificaciones</p>
+      </header>
+
+      {% if notificaciones %}
+          {% for noti in notificaciones %}
+          <div class="tarjeta">
+            <h2>{{ noti.nombre_Tipo if noti.nombre_Tipo else 'Alerta' }}</h2>
+            <p>{{ noti.mensaje }}</p>
+            <p><small>{{ noti.fecha }}</small></p>
+          </div>
+          {% endfor %}
+      {% else %}
+          <div class="tarjeta">
+            <h2>Bandeja vacía</h2>
+            <p>No tienes notificaciones nuevas en este momento.</p>
+          </div>
+      {% endif %}
+      
+  </div>
+  
+  <script src="../Menu/MenuDes.js"></script>
+</body>
+</html>

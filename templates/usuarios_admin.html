@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel de Administración - Usuarios</title>
+
+  <link rel="icon" type="image/JPG" href="../static/images/logof1.jpeg">
+  <!-- Se enlaza el mismo CSS para mantener la paleta de colores azul y dorado -->
+  <link rel="stylesheet" href="../static/css/estiloFuncional.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+<!-- Barra lateral reciclada de Menu.html -->
+<div class="sidebar" id="sidebar">
+    <div class="toggle" onclick="toggleSidebar()">
+        <i class="fa-solid fa-bars" style="color:black;"></i>
+    </div>
+
+    <a href="{{ url_for('usuario') }}" class="MItem">
+        <i class="fa-solid fa-circle-user" style="color:black;font-size:45px;"></i>
+        <span class="MT">Perfil</span>
+    </a>
+
+    <a href="{{ url_for('menu') }}" class="MItem">
+        <i class="fa-solid fa-house" style="color:black;font-size:25px;"></i>
+        <span class="MT">Inicio</span>
+    </a>
+
+    <!-- Enlace exclusivo para el panel en el que estamos actualmente -->
+    <a href="{{ url_for('usuarios') }}" class="MItem">
+        <i class="fa-solid fa-users-gear" style="color:black;font-size:25px;"></i>
+        <span class="MT">Gestión de Usuarios</span>
+    </a>
+
+    <a href="{{ url_for('logout') }}" class="MItem" style="margin-top:auto;">
+        <i class="fa-solid fa-right-from-bracket" style="color:#d62828;font-size:35px;"></i>
+        <span class="MT" style="color:#d62828;">Cerrar sesión</span>
+    </a>
+</div>
+
+<!-- Título principal usando los contenedores estándar de la app -->
+<div class="master">
+    <div class="M">
+        <h2><i class="fa-solid fa-shield-halved"></i> Panel de Administración</h2>
+        <p style="opacity: 0.8; font-size: 14px;">Gestión de roles y visualización del directorio general de usuarios.</p>
+    </div>
+</div>
+
+<!-- Tabla de usuarios -->
+<div class="master">
+    <div class="M">
+        <h2>Directorio de Cuentas</h2>
+        
+        <div style="overflow-x: auto; margin-top: 15px;">
+            <table style="width: 100%; border-collapse: collapse; text-align: left;">
+                <thead>
+                    <!-- Cabecera de la tabla con el toque dorado del CSS -->
+                    <tr style="border-bottom: 2px solid rgb(212, 175, 55); color: rgb(212, 175, 55);">
+                        <th style="padding: 12px;">ID</th>
+                        <th style="padding: 12px;">Nombre</th>
+                        <th style="padding: 12px;">Correo Electrónico</th>
+                        <th style="padding: 12px;">Rol Actual</th>
+                        <th style="padding: 12px;">Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for usuario in lista_usuarios %}
+                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1); transition: background 0.3s;">
+                        <td style="padding: 12px;">{{ usuario.id_usuario }}</td>
+                        <td style="padding: 12px;">{{ usuario.nombre }}</td>
+                        <td style="padding: 12px;">{{ usuario.correo }}</td>
+                        <td style="padding: 12px; font-weight: bold;">
+                            {% if usuario.ID_Rol == 2 %}
+                                <span style="color: rgb(212, 175, 55);">Admin</span>
+                            {% else %}
+                                <span style="opacity: 0.8;">Cliente</span>
+                            {% endif %}
+                        </td>
+                        <td style="padding: 12px;">
+                            <!-- Formulario para cambiar el rol del usuario -->
+                            <form action="/cambiar_rol" method="POST" style="margin: 0;">
+                                <input type="hidden" name="id_objetivo" value="{{ usuario.id_usuario }}">
+                                <input type="hidden" name="rol_actual" value="{{ usuario.ID_Rol }}">
+                                
+                                <!-- Botón que recicla la clase .boton de estiloFuncional.css -->
+                                <button type="submit" class="boton" style="padding: 8px 15px; width: auto; font-size: 13px;">
+                                    {% if usuario.ID_Rol == 2 %}
+                                        Quitar Admin
+                                    {% else %}
+                                        Hacer Admin
+                                    {% endif %}
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/MenuDes.js') }}"></script>
+</body>
+</html>

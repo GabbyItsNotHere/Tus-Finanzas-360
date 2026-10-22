@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, session, jsonify
 import mysql.connector
 from werkzeug.security import generate_password_hash, check_password_hash
+import os
 
 # Creación de la aplicación
 app = Flask(__name__)
@@ -10,10 +11,11 @@ app.secret_key = "clave_secreta_tus_finanzas_360"
 
 # Configuración de la conexión a MySQL
 db_config = {
-    "host": "localhost",
-    "user": "root",
-    "password": "",  # Escribe aquí tu contraseña si tienes una en XAMPP/MySQL
-    "database": "tusfinanzas360"
+    "host": os.environ.get("MYSQL_HOST"),
+    "user": os.environ.get("MYSQL_USER"),
+    "password": os.environ.get("MYSQL_PASSWORD"),
+    "database": os.environ.get("MYSQL_DB"),
+    "port": int(os.environ.get("MYSQL_PORT", 3306))
 }
 
 # Función para obtener una conexión

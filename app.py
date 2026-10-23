@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, session, j
 import mysql.connector
 from werkzeug.security import generate_password_hash, check_password_hash
 import os
+from datetime import datetime
 
 # Creación de la aplicación
 app = Flask(__name__)
@@ -151,7 +152,13 @@ def registro():
         contrasena_plana = request.form["password"]
         contrasena_encriptada = generate_password_hash(contrasena_plana)
         
-        edad = request.form["edad"]
+        fecha_nacimiento_str = request.form["edad"]
+       
+        fecha_nacimiento = datetime.strptime(fecha_nacimiento_str, "%Y-%m-%d")
+        
+        hoy = datetime.today()
+        edad = hoy.year - fecha_nacimiento.year - ((hoy.month, hoy.day) < (fecha_nacimiento.month, fecha_nacimiento.day))
+        
         genero = request.form["genero"]
         
         conexion = get_connection()

@@ -63,15 +63,6 @@
           onclick="event.stopPropagation(); window.location.href=this.getAttribute('data-url');">Notificaciones</span>
       </div>
     
-      <div class="MItem" onclick="toggleSidebar();" style="margin-top: auto;">
-        <i class="fa-solid fa-gears"
-          style="color: rgb(0,0,0); font-size: 45px;"
-          data-url="{{ url_for('confi') }}"
-          onclick="event.stopPropagation(); window.location.href=this.getAttribute('data-url');"></i>
-        <span class="MT" 
-          data-url="{{ url_for('confi') }}" 
-          onclick="event.stopPropagation(); window.location.href=this.getAttribute('data-url');">Configuracion</span>    
-      </div>
 
       <a href="{{ url_for('logout') }}" class="MItem">
         <i class="fa-solid fa-right-from-bracket" style="color:#d62828;font-size:35px;"></i>

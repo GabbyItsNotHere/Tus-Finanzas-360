@@ -14,7 +14,7 @@ app.secret_key = "clave_secreta_tus_finanzas_360"
 db_config = {
     "host": os.environ.get("MYSQL_HOST", "mysql-3a8606d8-ibrahimjibrailb-16ca.f.aivencloud.com"),
     "user": os.environ.get("MYSQL_USER", "avnadmin"),
-    "password": os.environ.get("MYSQL_PASSWORD"),
+    "password": os.environ.get("MYSQL_PASSWORD", "AVNS_wABlgkqRp0DcLGcfz8I"),
     "database": os.environ.get("MYSQL_DB", "defaultdb"),
     "port": int(os.environ.get("MYSQL_PORT", 23767)),
     "ssl_disabled": True

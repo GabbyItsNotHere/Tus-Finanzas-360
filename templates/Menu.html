@@ -46,11 +46,6 @@
         <span class="MT">Notificaciones</span>
     </a>
 
-    <a href="{{ url_for('confi') }}" class="MItem" style="margin-top:auto;">
-        <i class="fa-solid fa-gears" style="color:black;font-size:40px;"></i>
-        <span class="MT">Configuración</span>
-    </a>
-
     {% if session.get('rol_id') == 2 %}
     <a href="{{ url_for('usuarios') }}" class="MItem">
         <i class="fa-solid fa-users-gear" style="color:black;font-size:25px;"></i>

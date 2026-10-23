@@ -65,7 +65,7 @@ def obtener_balance(id_usuario):
     # Total ahorrado en metas
     cursor.execute("""
         SELECT COALESCE(SUM(monto_aportado),0)
-        FROM Aportes_Metas
+        FROM aportes_metas
         WHERE id_usuario=%s
     """, (id_usuario,))
     ahorros = float(cursor.fetchone()[0])
@@ -471,9 +471,9 @@ def meta():
 
         cursor.execute("""
             SELECT *
-            FROM Metas
+            FROM metas
             WHERE ID_usuario=%s
-            ORDER BY ID_Metas DESC
+            ORDER BY ID_metas DESC
         """, (id_usuario,))
         metas = cursor.fetchall()
 
@@ -511,7 +511,7 @@ def crear_meta():
             fecha_limite = None
 
         sql = """
-        INSERT INTO Metas
+        INSERT INTO metas
         (
             Nombre,
             Descripcion,

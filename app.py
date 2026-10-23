@@ -20,6 +20,7 @@ db_config = {
     "ssl_disabled": True
 }
 
+
 # Función para obtener una conexión
 def get_connection():
     return mysql.connector.connect(**db_config)
